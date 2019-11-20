@@ -1,0 +1,36 @@
+{
+	"name": "light-bounds",
+	"version": "0.0.1",
+	"description": "Another getBoundingClientRect",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc",
+		"prepublish": "npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Onset/light-bounds.git"
+	},
+	"keywords": [
+		"getBoundingClientRect",
+		"typescript"
+	],
+	"author": {
+		"name": "Filip Chalupa",
+		"email": "chalupa.filip@gmail.com",
+		"url": "https://www.npmjs.com/~onset"
+	},
+	"license": "ISC",
+	"devDependencies": {
+		"typescript": "^3.3.3"
+	},
+	"prettier": {
+		"semi": false,
+		"singleQuote": true,
+		"trailingComma": "es5",
+		"useTabs": true,
+		"arrowParens": "always"
+	}
+}
