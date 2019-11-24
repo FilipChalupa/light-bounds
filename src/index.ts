@@ -39,6 +39,10 @@ function triggerSoftUpdate() {
 	triggerCallbacks()
 }
 
+export function forceUpdate() {
+	triggerHardUpdate()
+}
+
 function initializeWatcher() {
 	//@TODO debounce resize
 	window.addEventListener('resize', triggerHardUpdate)
