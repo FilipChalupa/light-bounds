@@ -45,8 +45,8 @@ export function forceUpdate() {
 
 function initializeWatcher() {
 	//@TODO debounce resize
-	window.addEventListener('resize', triggerHardUpdate)
-	window.addEventListener('scroll', triggerSoftUpdate)
+	window.addEventListener('resize', triggerHardUpdate, { passive: true })
+	window.addEventListener('scroll', triggerSoftUpdate, { passive: true })
 }
 
 function triggerCallbacks() {
