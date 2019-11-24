@@ -28,17 +28,21 @@ const watchedElements = new Map<LightBoundsTarget, TargetData>()
 let lastResizeRefresh = 0
 let lastScrollRefresh = 0
 
+function triggerHardUpdate() {
+	lastResizeRefresh++
+	lastScrollRefresh++
+	triggerCallbacks()
+}
+
+function triggerSoftUpdate() {
+	lastScrollRefresh++
+	triggerCallbacks()
+}
+
 function initializeWatcher() {
-	//@TODO debounce
-	window.addEventListener('resize', () => {
-		lastResizeRefresh++
-		lastScrollRefresh++
-		triggerCallbacks()
-	})
-	window.addEventListener('scroll', () => {
-		lastScrollRefresh++
-		triggerCallbacks()
-	})
+	//@TODO debounce resize
+	window.addEventListener('resize', triggerHardUpdate)
+	window.addEventListener('scroll', triggerSoftUpdate)
 }
 
 function triggerCallbacks() {
