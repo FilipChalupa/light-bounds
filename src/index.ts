@@ -1,6 +1,13 @@
+import throttle from 'throttleit'
+
 export type LightBoundsTarget = HTMLElement
 
 export type LightBoundsOnChange = (rect: LightBoundsBoundingRect) => void
+
+export interface LightBoundsOptions {
+	onChange: undefined | LightBoundsOnChange
+	throttleWait: false | number
+}
 
 export interface LightBoundsBoundingRect {
 	top: number
@@ -43,9 +50,14 @@ export function forceUpdate() {
 	triggerHardUpdate()
 }
 
-function initializeWatcher() {
-	//@TODO debounce resize
-	window.addEventListener('resize', triggerHardUpdate, { passive: true })
+function initializeWatcher(throttleWait: LightBoundsOptions['throttleWait']) {
+	window.addEventListener(
+		'resize',
+		throttleWait
+			? throttle(triggerHardUpdate, throttleWait)
+			: triggerHardUpdate,
+		{ passive: true }
+	)
 	window.addEventListener('scroll', triggerSoftUpdate, { passive: true })
 }
 
@@ -99,10 +111,11 @@ function getLightBoundsWithUpdate(
 
 export function lightBounds(
 	target: LightBoundsTarget,
-	onChange?: LightBoundsOnChange
+	// @TODO: don't define throttleWait localy like here - this makes it hard to set it only once if you call lightBounds on multiple places
+	{ onChange = undefined, throttleWait = 200 }: Partial<LightBoundsOptions> = {}
 ): LightBoundsBoundingRect {
 	if (watchedElements.size === 0) {
-		initializeWatcher()
+		initializeWatcher(throttleWait)
 	}
 
 	if (!watchedElements.has(target)) {

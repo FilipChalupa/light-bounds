@@ -32,5 +32,9 @@
 		"trailingComma": "es5",
 		"useTabs": true,
 		"arrowParens": "always"
+	},
+	"dependencies": {
+		"@types/throttleit": "^1.0.0",
+		"throttleit": "^1.0.0"
 	}
 }
