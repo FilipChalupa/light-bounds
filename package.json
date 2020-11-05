@@ -11,7 +11,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Onset/light-bounds.git"
+		"url": "https://github.com/FilipChalupa/light-bounds.git"
 	},
 	"keywords": [
 		"getBoundingClientRect",
