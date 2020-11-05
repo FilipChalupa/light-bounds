@@ -2,11 +2,12 @@
 	"name": "light-bounds",
 	"version": "0.0.7",
 	"description": "Another getBoundingClientRect",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
+	"main": "./dist/index.js",
+	"module": "./dist/index.es.js",
+	"types": "./dist/index.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "tsc",
+		"start": "rollup -c -w",
+		"build": "rollup -c",
 		"prepublish": "npm run build"
 	},
 	"repository": {
@@ -23,9 +24,6 @@
 		"url": "https://www.npmjs.com/~onset"
 	},
 	"license": "ISC",
-	"devDependencies": {
-		"typescript": "^3.3.3"
-	},
 	"prettier": {
 		"semi": false,
 		"singleQuote": true,
@@ -34,7 +32,19 @@
 		"arrowParens": "always"
 	},
 	"dependencies": {
-		"@types/throttleit": "^1.0.0",
 		"throttleit": "^1.0.0"
-	}
+	},
+	"devDependencies": {
+		"@types/throttleit": "^1.0.0",
+		"@rollup/plugin-commonjs": "^16.0.0",
+		"@rollup/plugin-node-resolve": "^10.0.0",
+		"prettier": "^2.1.2",
+		"rollup": "^2.33.1",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"rollup-plugin-typescript2": "^0.29.0",
+		"typescript": "^4.0.5"
+	},
+	"files": [
+		"/dist/"
+	]
 }
