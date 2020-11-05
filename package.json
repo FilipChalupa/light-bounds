@@ -1,6 +1,6 @@
 {
 	"name": "light-bounds",
-	"version": "0.0.7",
+	"version": "0.1.0",
 	"description": "Another getBoundingClientRect",
 	"main": "./dist/index.js",
 	"module": "./dist/index.es.js",
